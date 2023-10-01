@@ -11,13 +11,11 @@ const currentLectureSlice = createSlice({
   initialState,
   reducers: {
     setLectureId: (state, action) => {
-      
-      const id  = action.payload;
-      console.log('Here ok id',id);
+      const id = action.payload;
       const newState = {
-        state,        
+        state,
         currentLectureId: id,
-        status: 'loaded'
+        status: 'loaded',
       };
       return newState;
     },

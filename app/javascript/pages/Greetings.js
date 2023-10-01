@@ -4,8 +4,6 @@ import { fetchMessages } from '../redux/messages/messagesSlice';
 import Greeting from '../components/Greeting';
 import './Greetings.css';
 
-
-
 export default function Greetings() {
   const dispatch = useDispatch();
 

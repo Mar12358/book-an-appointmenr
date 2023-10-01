@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './Greeting.css';
 
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { removeLecture, deleteItemAxios } from '../redux/messages/messagesSlice';
 import { setLectureId } from '../redux/lecture/currentLectureSlice';
-import { useNavigate } from 'react-router-dom';
 
 function Greeting(props) {
   const navigate = useNavigate();
@@ -66,18 +66,15 @@ function Greeting(props) {
           Remove
         </button>
 
-         <button
+        <button
           type="submit"
           onClick={() => {
             dispatch(setLectureId({ id }));
             navigate('/lecture_details');
-
           }}
         >
           Details
         </button>
-
-        
 
       </div>
     </div>

@@ -1,36 +1,33 @@
 import './Nav.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from '../redux/user/userReducer';
-import { useEffect } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
 
 const Nav = () => {
-  
   const dispatch = useDispatch();
 
   const { status } = useSelector((store) => store.currentUser);
-  
+
   useEffect(() => {
-  
     if (status === 'no user') {
-      const getUser =  async () => {
+      const getUser = async () => {
         const url = 'http://localhost:3000/api/v1/users';
         return new Promise((resolve, reject) => {
           fetch(url)
             .then((res) => res.json())
             .then((userid) => {
-              dispatch(setCurrentUser(userid))          
+              dispatch(setCurrentUser(userid));
               resolve(userid);
             }).catch((err) => {
               reject(err);
             });
         });
       };
-      getUser()
+      getUser();
     }
-  }, [status,dispatch]);
+  }, [status, dispatch]);
 
   return (
     <div className="TabListContainer">

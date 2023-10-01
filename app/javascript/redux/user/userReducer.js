@@ -4,15 +4,14 @@ const currentUserSlice = createSlice({
   name: 'currentUser',
   initialState: {
     currentUser: 0,
-    status: 'no user'
+    status: 'no user',
   },
   reducers: {
     setCurrentUser: (state, action) => {
-      console.log('action.payload', action.payload)
-      const newState ={
-      ...state,
-      currentUser: action.payload,
-      }
+      const newState = {
+        ...state,
+        currentUser: action.payload,
+      };
       return newState;
     },
   },
