@@ -11,17 +11,21 @@ import MyReservations from './components/MyReservations';
 import AddLecture from './components/AddLecture';
 import DeletePage from './pages/DeletePage';
 
+import Greetings from './pages/Greetings'
+import Details from './components/Details';
+
 function App() {
   return (
     <div className="container-column">
       <Nav />
       <Routes className="container-routes">
         <Route index element={<Lecture />} />
-        <Route path="lectures" element={<Lecture />} />
+        <Route path="lectures" element={<Greetings />} />
         <Route path="reserve" element={<Reserve />} />
         <Route path="my-reservations" element={<MyReservations />} />
         <Route path="add_lecture" element={<AddLecture />} />
         <Route path="delete_lecture" element={<DeletePage />} />
+        <Route path="lecture_details" element={<Details />} />
       </Routes>
     </div>
   );
