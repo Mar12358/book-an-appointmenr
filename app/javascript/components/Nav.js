@@ -1,62 +1,36 @@
 import './Nav.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-// import { useSelector } from 'react-redux';
 
-import LectureService from '../Service/classApi';
-import { setAllReservation } from '../redux/reservation/reservationReducer';
-import showError from '../Ui/ErrorAlert';
 import { setCurrentUser } from '../redux/user/userReducer';
-import { setAllLecture } from '../redux/lecture/lectureReducer';
-// import notify from '../Ui/SuccesAlert';
+import { useEffect } from 'react';
+import { useDispatch, useSelector} from 'react-redux';
 
 const Nav = () => {
+  
   const dispatch = useDispatch();
-  // const { currentUser } = useSelector((state) => state.currentUser);
-  const currentUser = 1;
-  useEffect(() => {
-    const getall = async () => {
-      try {
-        const response = await LectureService.getAllLectures();
-        if (response) {
-          dispatch(setAllLecture(response));
-          // notify('Lectures loaded successfully');
-        } else {
-          showError('Something went wrong!, try again');
-        }
-      } catch (error) {
-        showError('Request failed!', error);
-      }
-      try {
-        const response = await LectureService.getCurrentUser();
-        if (response) {
-          localStorage.setItem('currentUser', response);
-          dispatch(setCurrentUser(response));
-        } else {
-          showError('Something went wrong!, try again');
-        }
-      } catch (error) {
-        showError('Request failed!', error);
-      }
 
-      try {
-        const response = await LectureService.getReservation(currentUser);
-        if (response && response.length > 0) {
-          // Sort reservations in descending order based on the created_at date
-          response.sort(
-            (a, b) => new Date(b.created_at) - new Date(a.created_at),
-          );
-          dispatch(setAllReservation(response));
-        } else {
-          showError('No Reservation found');
-        }
-      } catch (error) {
-        // showError('Request failed!', error);
-      }
-    };
-    getall();
-  }, [currentUser, dispatch]);
+  const { status } = useSelector((store) => store.currentUser);
+  
+  useEffect(() => {
+  
+    if (status === 'no user') {
+      const getUser =  async () => {
+        const url = 'http://localhost:3000/api/v1/users';
+        return new Promise((resolve, reject) => {
+          fetch(url)
+            .then((res) => res.json())
+            .then((userid) => {
+              dispatch(setCurrentUser(userid))          
+              resolve(userid);
+            }).catch((err) => {
+              reject(err);
+            });
+        });
+      };
+      getUser()
+    }
+  }, [status,dispatch]);
 
   return (
     <div className="TabListContainer">

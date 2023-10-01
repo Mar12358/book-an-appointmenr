@@ -14,7 +14,10 @@ import DeletePage from './pages/DeletePage';
 import Greetings from './pages/Greetings'
 import Details from './components/Details';
 
+
+
 function App() {
+
   return (
     <div className="container-column">
       <Nav />
