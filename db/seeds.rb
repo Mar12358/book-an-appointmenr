@@ -1,3 +1,4 @@
+=begin
 users = [
   {
     "name": "Martin",
@@ -5,7 +6,7 @@ users = [
     "password": "123456"
   }
 ]
-
+=end
 
 lectures = [
   {
@@ -66,6 +67,7 @@ lectures = [
   }
 ]
 
+=begin 
 reservations = [
   {
   "user_id": 5,
@@ -74,6 +76,7 @@ reservations = [
   "city": "Buenos Aires",
   }
 ]
+=end
 
 users.each do |user|
   User.create(name: user[:name], email: user[:email], password: user[:password])
