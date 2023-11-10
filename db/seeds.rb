@@ -76,11 +76,11 @@ reservations = [
   "city": "Buenos Aires",
   }
 ]
-=end
 
 users.each do |user|
   User.create(name: user[:name], email: user[:email], password: user[:password])
 end
+=end
 
 lectures.each do |lecture|
   Lecture.create(
@@ -92,6 +92,7 @@ lectures.each do |lecture|
   )
 end
 
+=begin 
 reservations.each do |reservation|
   Reservation.create(
     user_id: reservation[:user_id],
@@ -100,4 +101,4 @@ reservations.each do |reservation|
     city: reservation[:city]
   )
 end
-
+=end
