@@ -1,4 +1,4 @@
-import './AddLecture.css';
+// import './AddLecture.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LectureService from '../Service/classApi';
@@ -41,17 +41,16 @@ const AddLecture = () => {
 
   return (
 
-    <section className="wrapper-add-lecture" id="contact">
+    <section className="wrapper-add-lecture flex flex-col justify-evenly" id="contact">
 
-      <h2 className="content">
-        We are always interested in creating new projects,
-        so if you would like to add one lecture please fill this form.
+      <h2 className="content text-center text-3xl font-bold py-3">
+        Add a Lecture
       </h2>
-      <form className="form-add-lecture" onSubmit={handleSubmit}>
+      <form className="form-add-lecture flex flex-col mt-2 gap-2 items-center" onSubmit={handleSubmit}>
         <label className="label-size" htmlFor="item-1">
           <input
             id="item-1"
-            className="items-form"
+            className="items-form md:h-[2rem] h-[1.5rem]  rounded-[1rem] w-[55vw] sm:w-[55vw] md:mx-[5%] lg:w-[40rem] pb-[2rem] p-2"
             type="text"
             name="lecturename"
             placeholder="Lecture name"
@@ -64,7 +63,7 @@ const AddLecture = () => {
         <label className="label-size" htmlFor="item-2">
           <input
             id="item-2"
-            className="items-form"
+            className="items-form md:h-[2rem] h-[1.5rem]  rounded-[1rem] w-[55vw] sm:w-[55vw] md:mx-[5%] lg:w-[40rem] pb-[2rem] p-2"
             type="text"
             name="imageurl"
             placeholder="Image url"
@@ -77,7 +76,7 @@ const AddLecture = () => {
         <label className="label-size" htmlFor="item-3">
           <input
             id="item-3"
-            className="items-form"
+            className="items-form md:h-[2rem] h-[1.5rem]  rounded-[1rem] w-[55vw] sm:w-[55vw] md:mx-[5%] lg:w-[40rem] pb-[2rem] p-2"
             type="text"
             name="websitelink"
             placeholder="Website link"
@@ -90,7 +89,7 @@ const AddLecture = () => {
         <label className="label-size" htmlFor="item-4">
           <input
             id="item-4"
-            className="items-form"
+            className="items-form md:h-[2rem] h-[1.5rem] rounded-[1rem] w-[55vw] sm:w-[55vw] md:mx-[5%] lg:w-[40rem] pb-[2rem] p-2"
             type="number"
             name="price"
             placeholder="Price"
@@ -103,7 +102,7 @@ const AddLecture = () => {
         <label className="label-size" htmlFor="item-5">
           <textarea
             id="item-5"
-            className="textarea"
+            className="textarea md:h-[5rem] h-[3rem] rounded-[1rem] w-[55vw] sm:w-[55vw] md:mx-[5%] lg:w-[40rem] pb-[2rem] p-2"
             type="textarea"
             name="description"
             placeholder="Description"
@@ -112,10 +111,11 @@ const AddLecture = () => {
             required
           />
         </label>
-
-        <button className="form-button" type="submit" id="btn-submit">
-          Create Lecture
-        </button>
+        <div>
+          <button className="form-button hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded transition-colors duration-300 flex items-center justify-center text-center w-[55vw] sm:w-[55vw] md:mx-[5%] lg:w-[40rem]" type="submit" id="btn-submit">
+            Create Lecture
+          </button>
+        </div>
       </form>
 
     </section>

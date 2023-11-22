@@ -13,7 +13,7 @@ import DeletePage from './pages/DeletePage';
 import Details from './components/Details';
 
 const App = () => (
-  <div className="container-column">
+  <div className="container-column flex flex-row justify-between gap-5">
     <Nav />
     <Routes className="container-routes">
       <Route index element={<Lecture />} />
